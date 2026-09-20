@@ -1,0 +1,11 @@
+{
+  "name": "japanese-b1-phrase-course-template",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "audio-input": "node scripts/build-audio-input.mjs",
+    "audio-map": "node scripts/build-audio-map.mjs",
+    "validate": "node scripts/validate-template.mjs",
+    "serve": "python3 -m http.server 4175 --bind 0.0.0.0"
+  }
+}

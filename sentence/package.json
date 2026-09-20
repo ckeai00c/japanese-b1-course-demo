@@ -1,0 +1,1 @@
+{"name":"japanese-b1-sentence-course-template","version":"1.0.0","private":true,"scripts":{"validate":"node scripts/validate-template.mjs","serve":"python3 -m http.server 4177 --bind 0.0.0.0"}}

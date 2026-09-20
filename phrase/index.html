@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#111426">
+  <title>日语 B1 词组关</title>
+  <link rel="stylesheet" href="./course.css?v=25">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="screen start-screen active" id="startScreen">
+      <p class="eyebrow">JAPANESE B1 · PHRASE COURSE</p>
+      <h1>旅行日语词组关</h1>
+      <p class="start-copy">通过搭配、例句和场景选择，掌握酒店与机场中的常用表达。</p>
+      <div class="lesson-picker" id="lessonPicker" aria-label="选择课次"></div>
+      <button class="primary-button" id="startButton" type="button">开始学习</button>
+    </section>
+
+    <section class="screen lesson-screen" id="lessonScreen">
+      <header class="lesson-header">
+        <button class="icon-button" id="closeButton" type="button" aria-label="退出课程">×</button>
+        <div class="progress-track" aria-label="课程进度"><span class="progress-fill" id="progressFill"></span></div>
+        <button class="furigana-toggle" id="furiganaToggle" type="button" aria-pressed="true" aria-label="关闭注音" title="显示或隐藏注音">注</button>
+        <span class="step-count" id="stepCount"></span>
+      </header>
+      <div class="stage" id="stage"></div>
+    </section>
+
+    <section class="screen finish-screen" id="finishScreen">
+      <div class="finish-badge">✓</div>
+      <p class="eyebrow">PHRASE COURSE COMPLETE</p>
+      <h2 id="finishTitle"></h2>
+      <p id="finishCopy"></p>
+      <button class="primary-button" id="restartButton" type="button">再练一次</button>
+      <button class="secondary-button" id="backButton" type="button">返回课次</button>
+    </section>
+  </main>
+  <div class="lookup-pop" id="lookupPop" role="status"></div>
+  <div class="confirm-overlay" id="oralSkipDialog" hidden>
+    <section class="confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="oralSkipTitle">
+      <h2 id="oralSkipTitle">将跳过本关所有口语题</h2>
+      <p>之后仍可重新进入本课练习。</p>
+      <div class="confirm-actions">
+        <button class="confirm-cancel" id="oralSkipCancel" type="button">取消</button>
+        <button class="confirm-accept" id="oralSkipConfirm" type="button">确定</button>
+      </div>
+    </section>
+  </div>
+  <script src="./course.config.js?v=21"></script>
+  <script src="./audio-map.js?v=17"></script>
+  <script src="./course-engine.js?v=25"></script>
+</body>
+</html>

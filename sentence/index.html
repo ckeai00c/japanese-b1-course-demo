@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#111426">
+  <title>日语 B1 句子关</title>
+  <link rel="stylesheet" href="./course.css?v=19">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="screen start-screen active" id="startScreen">
+      <p class="eyebrow">JAPANESE B1 · SENTENCE COURSE</p>
+      <h1>旅行日语句子关</h1>
+      <p class="start-copy">先理解语法，再通过听力和对话掌握完整句子。</p>
+      <button class="primary-button" id="startButton" type="button">开始学习</button>
+    </section>
+    <section class="screen lesson-screen" id="lessonScreen">
+      <header class="lesson-header">
+        <button class="icon-button" id="closeButton" type="button" aria-label="退出课程">×</button>
+        <div class="progress-track"><span class="progress-fill" id="progressFill"></span></div>
+        <button class="furigana-toggle" id="furiganaToggle" type="button" aria-pressed="true" aria-label="关闭注音" title="显示或隐藏注音">注</button>
+        <span class="step-count" id="stepCount"></span>
+      </header>
+      <div class="grammar-bar" id="grammarBar"></div>
+      <div class="stage" id="stage"></div>
+    </section>
+    <section class="screen finish-screen" id="finishScreen">
+      <div class="finish-badge">✓</div>
+      <p class="eyebrow">SENTENCE COURSE COMPLETE</p>
+      <h2 id="finishTitle"></h2>
+      <p id="finishCopy"></p>
+      <button class="primary-button" id="restartButton" type="button">再练一次</button>
+    </section>
+  </main>
+  <div class="lookup-pop" id="lookupPop" role="status"></div>
+  <script src="./course.config.js?v=15"></script>
+  <script src="./audio-map.js?v=12"></script>
+  <script src="./course-engine.js?v=19"></script>
+</body>
+</html>
