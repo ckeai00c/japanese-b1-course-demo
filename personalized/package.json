@@ -1,0 +1,9 @@
+{
+  "name": "personalized-phrase-course-template",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "validate": "node scripts/validate-template.mjs",
+    "serve": "python3 -m http.server 4173 --bind 0.0.0.0"
+  }
+}

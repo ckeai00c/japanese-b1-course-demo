@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#111225">
+  <title>个性化词组关</title>
+  <link rel="stylesheet" href="./course.css?v=5">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="screen start-screen active" id="startScreen"><p class="eyebrow" id="courseEyebrow"></p><h1 id="courseTitle"></h1><p id="courseDescription"></p><div class="lesson-tags" id="courseTags"></div><p class="unit-label">unit 1 · lesson order</p><div class="lesson-route" id="courseRoute" aria-label="关卡顺序"></div><button class="primary-button" id="startButton" type="button">开始挑战</button></section>
+    <section class="screen lesson-screen" id="lessonScreen"><header class="lesson-header"><button class="icon-button" id="closeButton" type="button" aria-label="退出课程">×</button><div class="progress-track" aria-label="课程进度"><span class="progress-fill" id="progressFill"></span></div><span class="step-count" id="stepCount"></span></header><div class="stage" id="stage"></div></section>
+    <section class="screen finish-screen" id="finishScreen"><div class="finish-badge">✓</div><h2 id="finishTitle"></h2><p id="finishCopy"></p><button class="primary-button" id="restartButton" type="button">再练一次</button></section>
+  </main>
+  <div class="lookup-pop" id="lookupPop" role="status"></div>
+  <script src="./course.config.js?v=5"></script>
+  <script src="./course-engine.js?v=5"></script>
+</body>
+</html>

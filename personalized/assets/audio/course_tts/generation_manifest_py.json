@@ -1,0 +1,659 @@
+{
+  "input": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts_input.csv",
+  "batch_name": "course_tts",
+  "audio_root": "",
+  "output_dir": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts",
+  "sentence_output_dir": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/sentence_audio",
+  "chunk_output_dir": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio",
+  "base_url": "http://172.16.200.91:8501",
+  "machine_voice": "ja-JP-NanamiNeural",
+  "machine_lang": "ja-JP",
+  "machine_audio_config": "audio-48khz-192kbitrate-mono-mp3",
+  "dedupe": {
+    "sentence": true,
+    "chunk": true
+  },
+  "generated_at": "2026-09-04 17:19:58",
+  "dry_run": false,
+  "chunk_split": {
+    "enabled": false
+  },
+  "jobs": [
+    {
+      "kind": "sentence",
+      "row_number": "2",
+      "text": "キャリー",
+      "tts_text": "キャリー",
+      "voice_code": "A01-M-JP",
+      "voice_name": "Chewchew",
+      "coefont": "e26382ba-2ae2-4cf7-8c1b-420ab4b845d8",
+      "pitch": null,
+      "filename": "A01-M-JP キャリー.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/speech/coefont/tts/1788513598890_172.16.152.101_8149.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/sentence_audio/A01-M-JP キャリー.mp3",
+      "bytes": 5362,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/speech/coefont/tts/1788513598890_172.16.152.101_8149.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "2",
+      "chunk_index": 1,
+      "text": "キャ",
+      "tts_text": "キャ",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row2_chunk1 キャ.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513602644_172.16.152.101_8150.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row2_chunk1 キャ.mp3",
+      "bytes": 28224,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513602644_172.16.152.101_8150.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "2",
+      "chunk_index": 2,
+      "text": "リー",
+      "tts_text": "リー",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row2_chunk2 リー.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513604944_172.16.152.101_8151.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row2_chunk2 リー.mp3",
+      "bytes": 33984,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513604944_172.16.152.101_8151.mp3"
+      }
+    },
+    {
+      "kind": "sentence",
+      "row_number": "3",
+      "text": "完全にキャリーしました",
+      "tts_text": "完全にキャリーしました",
+      "voice_code": "A01-M-JP",
+      "voice_name": "Chewchew",
+      "coefont": "e26382ba-2ae2-4cf7-8c1b-420ab4b845d8",
+      "pitch": null,
+      "filename": "A01-M-JP 完全にキャリーしました.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/speech/coefont/tts/1788513605584_172.16.152.101_8153.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/sentence_audio/A01-M-JP 完全にキャリーしました.mp3",
+      "bytes": 17306,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/speech/coefont/tts/1788513605584_172.16.152.101_8153.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "3",
+      "chunk_index": 1,
+      "text": "完全に",
+      "tts_text": "完全に",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row3_chunk1 完全に.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513608356_172.16.152.101_8154.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row3_chunk1 完全に.mp3",
+      "bytes": 41472,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513608356_172.16.152.101_8154.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "3",
+      "chunk_index": 2,
+      "text": "キャリーしました",
+      "tts_text": "キャリーしました",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row3_chunk2 キャリーしました.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513609154_172.16.152.101_8155.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row3_chunk2 キャリーしました.mp3",
+      "bytes": 47232,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513609154_172.16.152.101_8155.mp3"
+      }
+    },
+    {
+      "kind": "sentence",
+      "row_number": "4",
+      "text": "無双",
+      "tts_text": "無双",
+      "voice_code": "A01-M-JP",
+      "voice_name": "Chewchew",
+      "coefont": "e26382ba-2ae2-4cf7-8c1b-420ab4b845d8",
+      "pitch": null,
+      "filename": "A01-M-JP 無双.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/speech/coefont/tts/1788513610212_172.16.152.101_8157.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/sentence_audio/A01-M-JP 無双.mp3",
+      "bytes": 6197,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/speech/coefont/tts/1788513610212_172.16.152.101_8157.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "4",
+      "chunk_index": 1,
+      "text": "無",
+      "tts_text": "む",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row4_chunk1 無.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513613343_172.16.152.101_8158.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row4_chunk1 無.mp3",
+      "bytes": 29376,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513613343_172.16.152.101_8158.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "4",
+      "chunk_index": 2,
+      "text": "双",
+      "tts_text": "そう",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row4_chunk2 双.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513614989_172.16.152.101_8159.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row4_chunk2 双.mp3",
+      "bytes": 33984,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513614989_172.16.152.101_8159.mp3"
+      }
+    },
+    {
+      "kind": "sentence",
+      "row_number": "5",
+      "text": "めっちゃ無双しました",
+      "tts_text": "めっちゃ無双しました",
+      "voice_code": "A01-M-JP",
+      "voice_name": "Chewchew",
+      "coefont": "e26382ba-2ae2-4cf7-8c1b-420ab4b845d8",
+      "pitch": null,
+      "filename": "A01-M-JP めっちゃ無双しました.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/speech/coefont/tts/1788513616063_172.16.152.101_8161.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/sentence_audio/A01-M-JP めっちゃ無双しました.mp3",
+      "bytes": 15012,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/speech/coefont/tts/1788513616063_172.16.152.101_8161.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "5",
+      "chunk_index": 1,
+      "text": "めっちゃ",
+      "tts_text": "めっちゃ",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row5_chunk1 めっちゃ.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513619392_172.16.152.101_8162.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row5_chunk1 めっちゃ.mp3",
+      "bytes": 36864,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513619392_172.16.152.101_8162.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "5",
+      "chunk_index": 2,
+      "text": "無双しました",
+      "tts_text": "無双しました",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row5_chunk2 無双しました.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513620308_172.16.152.101_8163.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row5_chunk2 無双しました.mp3",
+      "bytes": 48960,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513620308_172.16.152.101_8163.mp3"
+      }
+    },
+    {
+      "kind": "sentence",
+      "row_number": "6",
+      "text": "沼ります",
+      "tts_text": "沼ります",
+      "voice_code": "A01-M-JP",
+      "voice_name": "Chewchew",
+      "coefont": "e26382ba-2ae2-4cf7-8c1b-420ab4b845d8",
+      "pitch": null,
+      "filename": "A01-M-JP 沼ります.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/speech/coefont/tts/1788513622249_172.16.152.101_8165.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/sentence_audio/A01-M-JP 沼ります.mp3",
+      "bytes": 8671,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/speech/coefont/tts/1788513622249_172.16.152.101_8165.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "6",
+      "chunk_index": 1,
+      "text": "沼り",
+      "tts_text": "ぬまり",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row6_chunk1 沼り.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513625667_172.16.152.101_8166.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row6_chunk1 沼り.mp3",
+      "bytes": 36288,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513625667_172.16.152.101_8166.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "6",
+      "chunk_index": 2,
+      "text": "ます",
+      "tts_text": "ます",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row6_chunk2 ます.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513627736_172.16.152.101_8167.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row6_chunk2 ます.mp3",
+      "bytes": 33408,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513627736_172.16.152.101_8167.mp3"
+      }
+    },
+    {
+      "kind": "sentence",
+      "row_number": "7",
+      "text": "普通に沼りました",
+      "tts_text": "普通に沼りました",
+      "voice_code": "A01-M-JP",
+      "voice_name": "Chewchew",
+      "coefont": "e26382ba-2ae2-4cf7-8c1b-420ab4b845d8",
+      "pitch": null,
+      "filename": "A01-M-JP 普通に沼りました.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/speech/coefont/tts/1788513629711_172.16.152.101_8169.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/sentence_audio/A01-M-JP 普通に沼りました.mp3",
+      "bytes": 15662,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/speech/coefont/tts/1788513629711_172.16.152.101_8169.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "7",
+      "chunk_index": 1,
+      "text": "普通に",
+      "tts_text": "普通に",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row7_chunk1 普通に.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513635667_172.16.152.101_8170.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row7_chunk1 普通に.mp3",
+      "bytes": 40320,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513635667_172.16.152.101_8170.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "7",
+      "chunk_index": 2,
+      "text": "沼りました",
+      "tts_text": "沼りました",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row7_chunk2 沼りました.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513649854_172.16.152.101_8171.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row7_chunk2 沼りました.mp3",
+      "bytes": 44928,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513649854_172.16.152.101_8171.mp3"
+      }
+    },
+    {
+      "kind": "sentence",
+      "row_number": "8",
+      "text": "ごめん、今日の試合、完全にキャリーしてたわ（笑）",
+      "tts_text": "ごめん、今日の試合、完全にキャリーしてたわ。ははは。",
+      "voice_code": "A01-M-JP",
+      "voice_name": "Chewchew",
+      "coefont": "e26382ba-2ae2-4cf7-8c1b-420ab4b845d8",
+      "pitch": null,
+      "filename": "A01-M-JP ごめん、今日の試合、完全にキャリーしてたわ（笑）.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/speech/coefont/tts/1788513650750_172.16.152.101_8173.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/sentence_audio/A01-M-JP ごめん、今日の試合、完全にキャリーしてたわ（笑）.mp3",
+      "bytes": 38811,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/speech/coefont/tts/1788513650750_172.16.152.101_8173.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "8",
+      "chunk_index": 1,
+      "text": "ごめん、",
+      "tts_text": "ごめん",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row8_chunk1 ごめん、.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513653752_172.16.152.101_8174.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row8_chunk1 ごめん、.mp3",
+      "bytes": 35136,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513653752_172.16.152.101_8174.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "8",
+      "chunk_index": 2,
+      "text": "ねえ、",
+      "tts_text": "ねえ",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row8_chunk2 ねえ、.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513654368_172.16.152.101_8175.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row8_chunk2 ねえ、.mp3",
+      "bytes": 32256,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513654368_172.16.152.101_8175.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "8",
+      "chunk_index": 3,
+      "text": "今日の試合、",
+      "tts_text": "今日の試合",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row8_chunk3 今日の試合、.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513654918_172.16.152.101_8176.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row8_chunk3 今日の試合、.mp3",
+      "bytes": 46656,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513654918_172.16.152.101_8176.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "8",
+      "chunk_index": 4,
+      "text": "昨日の試合、",
+      "tts_text": "昨日の試合",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row8_chunk4 昨日の試合、.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513655591_172.16.152.101_8177.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row8_chunk4 昨日の試合、.mp3",
+      "bytes": 48960,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513655591_172.16.152.101_8177.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "8",
+      "chunk_index": 5,
+      "text": "完全にキャリーしてた",
+      "tts_text": "完全にキャリーしてた",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row8_chunk5 完全にキャリーしてた.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513656331_172.16.152.101_8178.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row8_chunk5 完全にキャリーしてた.mp3",
+      "bytes": 58752,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513656331_172.16.152.101_8178.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "8",
+      "chunk_index": 6,
+      "text": "ずっと応援してた",
+      "tts_text": "ずっと応援してた",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row8_chunk6 ずっと応援してた.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513657083_172.16.152.101_8179.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row8_chunk6 ずっと応援してた.mp3",
+      "bytes": 55872,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513657083_172.16.152.101_8179.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "8",
+      "chunk_index": 7,
+      "text": "わ（笑）",
+      "tts_text": "わ。ははは。",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row8_chunk7 わ（笑）.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513657944_172.16.152.101_8180.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row8_chunk7 わ（笑）.mp3",
+      "bytes": 64512,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513657944_172.16.152.101_8180.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "8",
+      "chunk_index": 8,
+      "text": "よ（泣）",
+      "tts_text": "よ。",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row8_chunk8 よ（泣）.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513659196_172.16.152.101_8181.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row8_chunk8 よ（泣）.mp3",
+      "bytes": 29376,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513659196_172.16.152.101_8181.mp3"
+      }
+    },
+    {
+      "kind": "sentence",
+      "row_number": "9",
+      "text": "ごめん、今日の試合、めっちゃ無双してたわ（笑）",
+      "tts_text": "ごめん、今日の試合、めっちゃ無双してたわ。ははは。",
+      "voice_code": "A01-M-JP",
+      "voice_name": "Chewchew",
+      "coefont": "e26382ba-2ae2-4cf7-8c1b-420ab4b845d8",
+      "pitch": null,
+      "filename": "A01-M-JP ごめん、今日の試合、めっちゃ無双してたわ（笑）.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/speech/coefont/tts/1788513659697_172.16.152.101_8183.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/sentence_audio/A01-M-JP ごめん、今日の試合、めっちゃ無双してたわ（笑）.mp3",
+      "bytes": 36018,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/speech/coefont/tts/1788513659697_172.16.152.101_8183.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "9",
+      "chunk_index": 5,
+      "text": "めっちゃ無双してた",
+      "tts_text": "めっちゃ無双してた",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row9_chunk5 めっちゃ無双してた.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513662785_172.16.152.101_8184.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row9_chunk5 めっちゃ無双してた.mp3",
+      "bytes": 55872,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513662785_172.16.152.101_8184.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "9",
+      "chunk_index": 6,
+      "text": "ずっと逃げてた",
+      "tts_text": "ずっと逃げてた",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row9_chunk6 ずっと逃げてた.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513663697_172.16.152.101_8185.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row9_chunk6 ずっと逃げてた.mp3",
+      "bytes": 48960,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513663697_172.16.152.101_8185.mp3"
+      }
+    },
+    {
+      "kind": "sentence",
+      "row_number": "10",
+      "text": "ごめん、今日の試合、普通に沼ってたわ（笑）",
+      "tts_text": "ごめん、今日の試合、普通に沼ってたわ。ははは。",
+      "voice_code": "A01-M-JP",
+      "voice_name": "Chewchew",
+      "coefont": "e26382ba-2ae2-4cf7-8c1b-420ab4b845d8",
+      "pitch": null,
+      "filename": "A01-M-JP ごめん、今日の試合、普通に沼ってたわ（笑）.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/speech/coefont/tts/1788513664464_172.16.152.101_8187.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/sentence_audio/A01-M-JP ごめん、今日の試合、普通に沼ってたわ（笑）.mp3",
+      "bytes": 37093,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/speech/coefont/tts/1788513664464_172.16.152.101_8187.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "10",
+      "chunk_index": 5,
+      "text": "普通に沼ってた",
+      "tts_text": "普通に沼ってた",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row10_chunk5 普通に沼ってた.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513667356_172.16.152.101_8188.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row10_chunk5 普通に沼ってた.mp3",
+      "bytes": 54144,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513667356_172.16.152.101_8188.mp3"
+      }
+    },
+    {
+      "kind": "chunk",
+      "row_number": "10",
+      "chunk_index": 6,
+      "text": "普通に勝ってた",
+      "tts_text": "普通に勝ってた",
+      "voice_code": "machine",
+      "voice_name": "ja-JP-NanamiNeural",
+      "filename": "row10_chunk6 普通に勝ってた.mp3",
+      "ok": true,
+      "audio_url": "http://172.16.200.91:8501/s/outputs/azure/tts/1788513668140_172.16.152.101_8189.mp3",
+      "output_path": "/Users/chenying/Documents/ChatGPT/22/assets/audio/course_tts/chunk_audio/row10_chunk6 普通に勝ってた.mp3",
+      "bytes": 51840,
+      "response": {
+        "message": "success",
+        "status": 0,
+        "url": "/s/outputs/azure/tts/1788513668140_172.16.152.101_8189.mp3"
+      }
+    }
+  ]
+}
