@@ -95,9 +95,10 @@ check(engine.includes('oralMode="chunks"'), "Skipping oral practice must switch 
 check(engine.includes('playFeedback("correct")'), "Correct answers must play feedback audio");
 check(engine.includes('playFeedback("wrong")'), "Wrong answers must play feedback audio");
 check(engine.includes("playChunkAnswer"), "Chunk answers must sequence feedback before pronunciation audio");
-check(engine.includes("await playChunkAnswer"), "Correct chunk progression must wait for pronunciation audio to finish");
-check(engine.includes('stopRecording();stopAudio();renderOralFallback(index)'), "Skipping oral practice must stop sentence audio before showing chunks");
-check(engine.includes('bindLookups();wireContinue();return}stageEl.innerHTML'), "Skipped oral fallback must not auto-play the completed sentence");
+check(!engine.includes("await playChunkAnswer"), "Chunk pronunciation must not block progression");
+check(engine.includes("clearStageActivity"), "Stage changes must cancel stale audio, recognition, and timers");
+check(engine.includes('clearStageActivity();renderOralFallback(index)'), "Skipping oral practice must cancel audio and recognition before showing chunks");
+check(!engine.includes('${promptHTML(item.groups)}${completeHTML(item.groups,item.audio)}'), "Skipped oral fallback completion must show only the completed sentence");
 check(css.includes(".slot-punctuation"), "CSS must style fixed sentence punctuation");
 new Function(engine);
 

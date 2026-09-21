@@ -48,6 +48,7 @@ window.PHRASE_COURSE_CONFIG = {
     "普通に": "<ruby>普通<rt>ふつう</rt></ruby>に",
     "無双しました": "<ruby>無双<rt>むそう</rt></ruby>しました",
     "めっちゃ無双してた": "めっちゃ<ruby>無双<rt>むそう</rt></ruby>してた",
+    "完全にキャリーしてた": "<ruby>完全<rt>かんぜん</rt></ruby>にキャリーしてた",
     "普通に沼ってた": "<ruby>普通<rt>ふつう</rt></ruby>に<ruby>沼<rt>ぬま</rt></ruby>ってた",
     "普通に勝ってた": "<ruby>普通<rt>ふつう</rt></ruby>に<ruby>勝<rt>か</rt></ruby>ってた",
     "ずっと逃げてた": "ずっと<ruby>逃<rt>に</rt></ruby>げてた",
