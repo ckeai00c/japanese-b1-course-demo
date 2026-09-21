@@ -92,10 +92,12 @@ check(css.includes(".translation-segment") && css.includes("border-bottom: 1px d
 check(engine.includes("stages = [...vocabularyStages, ...writtenStages, ...oralStages]"), "Phrase course stage order must be vocabulary, written sentences, then oral sentences");
 check(css.includes("width: min(100%, 394px)"), "Desktop shell must be 394px wide");
 check(css.includes(".chunk-button.used { visibility: hidden; }"), "Used chunks must disappear without shifting layout");
-check(html.includes('id="furiganaToggle"'), "Lesson header must expose a furigana toggle");
+check(html.includes('id="settingsButton"') && html.includes('data-pronunciation="romaji"'), "Lesson header must expose pronunciation settings");
 check(engine.includes("automaticFurigana") && engine.includes("readingEntries"), "Japanese text without explicit readings must receive automatic furigana");
-check(engine.includes('localStorage.setItem("jp-furigana"'), "Furigana preference must persist");
-check(css.includes(".furigana-off rt"), "Furigana toggle must be able to hide all ruby readings");
+check(html.includes('id="pronunciationOverlay"') && html.includes('data-pronunciation="kana"') && html.includes('data-pronunciation="off"'), "Pronunciation settings must expose kana, romaji and off modes");
+check(read("pronunciation-settings.js").includes('localStorage.setItem("jp-pronunciation"'), "Pronunciation preference must persist");
+check(read("pronunciation-settings.js").includes("toRomaji"), "Romaji pronunciation conversion is missing");
+check(css.includes('body[data-pronunciation="off"] rt'), "Pronunciation settings must be able to hide ruby readings");
 new Function(engine);
 
 if (errors.length) {

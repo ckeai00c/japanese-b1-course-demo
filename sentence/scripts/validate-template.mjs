@@ -46,10 +46,12 @@ check(engine.includes("const options = [...content.options].sort"), "listening f
 check(config?.lesson?.grammar?.image === "assets/images/npc-right-1.png", "grammar intro must use the Tummy NPC asset");
 check(config.defaults?.feedback?.correct?.endsWith("/correctSpeak.mp3"), "Correct answers must use correctSpeak.mp3");
 check(!engine.includes("语法 2222"), "internal question type labels must not appear in UI");
-check(read("index.html").includes('id="furiganaToggle"'), "Lesson header must expose a furigana toggle");
+check(read("index.html").includes('id="settingsButton"') && read("index.html").includes('data-pronunciation="romaji"'), "Lesson header must expose pronunciation settings");
 check(engine.includes("automaticFurigana") && engine.includes("readingEntries"), "Japanese text without explicit readings must receive automatic furigana");
-check(engine.includes('localStorage.setItem("jp-furigana"'), "Furigana preference must persist");
-check(read("course.css").includes(".furigana-off rt"), "Furigana toggle must hide all ruby readings");
+check(read("index.html").includes('id="pronunciationOverlay"') && read("index.html").includes('data-pronunciation="kana"') && read("index.html").includes('data-pronunciation="off"'), "Pronunciation settings must expose kana, romaji and off modes");
+check(read("pronunciation-settings.js").includes('localStorage.setItem("jp-pronunciation"'), "Pronunciation preference must persist");
+check(read("pronunciation-settings.js").includes("toRomaji"), "Romaji pronunciation conversion is missing");
+check(read("course.css").includes('body[data-pronunciation="off"] rt'), "Pronunciation settings must hide all ruby readings");
 check(engine.includes("button.dataset.value === group.answer") && engine.includes("button.dataset.value === answer"), "Furigana markup must not affect answer checking");
 new Function(engine);
 if (errors.length) { console.error(errors.map((e) => `- ${e}`).join("\n")); process.exit(1); }

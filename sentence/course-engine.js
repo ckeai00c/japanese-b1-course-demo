@@ -52,13 +52,6 @@
     ? `<ruby>${esc(jp)}<rt>${esc(reading)}</rt></ruby>`
     : automaticFurigana(jp);
 
-  function syncFuriganaToggle() {
-    document.body.classList.toggle("furigana-off", !furiganaVisible);
-    const toggle = $("#furiganaToggle");
-    toggle.setAttribute("aria-pressed", String(furiganaVisible));
-    toggle.setAttribute("aria-label", furiganaVisible ? "关闭注音" : "开启注音");
-  }
-
   function stopAudio() {
     if (activeResolve) activeResolve();
     activeResolve = null;
@@ -341,10 +334,4 @@
   $("#jumpClose").addEventListener("click", () => { jumpOverlay.hidden = true; });
   jumpOverlay.addEventListener("click", (event) => { if (event.target === jumpOverlay) jumpOverlay.hidden = true; });
   $("#restartButton").addEventListener("click", () => { index = 0; $("#finishScreen").classList.remove("active"); $("#lessonScreen").classList.add("active"); render(); });
-  $("#furiganaToggle").addEventListener("click", () => {
-    furiganaVisible = !furiganaVisible;
-    window.localStorage.setItem("jp-furigana", furiganaVisible ? "on" : "off");
-    syncFuriganaToggle();
-  });
-  syncFuriganaToggle();
 })();

@@ -61,13 +61,6 @@
     ? `<ruby>${escapeHTML(jp)}<rt>${escapeHTML(reading)}</rt></ruby>`
     : automaticFurigana(jp);
 
-  function syncFuriganaToggle() {
-    document.body.classList.toggle("furigana-off", !furiganaVisible);
-    const toggle = $("#furiganaToggle");
-    toggle.setAttribute("aria-pressed", String(furiganaVisible));
-    toggle.setAttribute("aria-label", furiganaVisible ? "关闭注音" : "开启注音");
-  }
-
   function exposureJapanese(item) {
     const exposure = item.exposure;
     const start = exposure.jp.indexOf(item.core);
@@ -712,12 +705,5 @@
   jumpOverlay.addEventListener("click", (event) => { if (event.target === jumpOverlay) jumpOverlay.hidden = true; });
   $("#restartButton").addEventListener("click", () => { stageIndex = 0; oralSkipped = false; buildStages(); renderStage(); showScreen(lessonScreen); });
   $("#backButton").addEventListener("click", () => showScreen(startScreen));
-  $("#furiganaToggle").addEventListener("click", () => {
-    furiganaVisible = !furiganaVisible;
-    window.localStorage.setItem("jp-furigana", furiganaVisible ? "on" : "off");
-    syncFuriganaToggle();
-  });
-
-  syncFuriganaToggle();
   renderLessonPicker();
 })();
