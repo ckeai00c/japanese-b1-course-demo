@@ -4,6 +4,9 @@
   const config = window.SENTENCE_LEVEL_CONFIG;
   const $ = (selector) => document.querySelector(selector);
   const stageEl = $("#stage");
+  const progressTrack = $("#progressTrack");
+  const jumpOverlay = $("#jumpOverlay");
+  const jumpGrid = $("#jumpGrid");
   const lookupPop = $("#lookupPop");
   let index = 0;
   let activeAudio = null;
@@ -307,10 +310,20 @@
     render();
   }
 
+  function openJumpPicker() {
+    jumpGrid.innerHTML = Array.from({ length: 10 }, (_, itemIndex) => `<button class="jump-option ${itemIndex === index ? "selected" : ""}" type="button" data-jump-index="${itemIndex}">${itemIndex + 1}</button>`).join("");
+    jumpOverlay.hidden = false;
+    jumpGrid.querySelectorAll("[data-jump-index]").forEach((button) => button.addEventListener("click", () => {
+      stopAudio();
+      index = Number(button.dataset.jumpIndex);
+      jumpOverlay.hidden = true;
+      render();
+    }));
+  }
+
   function render() {
     window.scrollTo({ top: 0, behavior: "instant" });
     $("#progressFill").style.width = `${((index + 1) / 10) * 100}%`;
-    $("#stepCount").textContent = `${index + 1}/10`;
     const type = index === 0 ? "intro" : index <= 3 ? "cloze" : index <= 6 ? "fill" : "listen";
     $("#grammarBar").hidden = type === "intro";
     $("#grammarBar").innerHTML = type === "intro" ? "" : grammarBar();
@@ -324,6 +337,9 @@
 
   $("#startButton").addEventListener("click", () => { index = 0; $("#startScreen").classList.remove("active"); $("#lessonScreen").classList.add("active"); render(); });
   $("#closeButton").addEventListener("click", () => { stopAudio(); $("#lessonScreen").classList.remove("active"); $("#startScreen").classList.add("active"); });
+  progressTrack.addEventListener("click", openJumpPicker);
+  $("#jumpClose").addEventListener("click", () => { jumpOverlay.hidden = true; });
+  jumpOverlay.addEventListener("click", (event) => { if (event.target === jumpOverlay) jumpOverlay.hidden = true; });
   $("#restartButton").addEventListener("click", () => { index = 0; $("#finishScreen").classList.remove("active"); $("#lessonScreen").classList.add("active"); render(); });
   $("#furiganaToggle").addEventListener("click", () => {
     furiganaVisible = !furiganaVisible;

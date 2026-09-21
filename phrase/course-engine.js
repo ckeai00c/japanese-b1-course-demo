@@ -10,7 +10,9 @@
   const finishScreen = $("#finishScreen");
   const stageEl = $("#stage");
   const progressFill = $("#progressFill");
-  const stepCount = $("#stepCount");
+  const progressTrack = $("#progressTrack");
+  const jumpOverlay = $("#jumpOverlay");
+  const jumpGrid = $("#jumpGrid");
   const lookupPop = $("#lookupPop");
   let lesson = config.lessons.find((item) => item.id === config.defaults.selectedLessonId) || config.lessons[0];
   let stages = [];
@@ -678,13 +680,23 @@
     const stage = stages[stageIndex];
     currentBackground();
     progressFill.style.width = `${((stageIndex + 1) / stages.length) * 100}%`;
-    stepCount.textContent = `${stageIndex + 1}/${stages.length}`;
     lookupPop.classList.remove("visible");
     window.scrollTo(0, 0);
     if (stage.type === "collocation") renderCollocation(stage.itemIndex, stage.key);
     if (stage.type === "core") renderCore(stage.itemIndex);
     if (stage.type === "written") renderSentence(stage.itemIndex);
     if (stage.type === "oral") oralSkipped ? renderSentence(stage.itemIndex, "oral") : renderOral(stage.itemIndex);
+  }
+
+  function openJumpPicker() {
+    jumpGrid.innerHTML = stages.map((_, index) => `<button class="jump-option ${index === stageIndex ? "selected" : ""}" type="button" data-jump-index="${index}">${index + 1}</button>`).join("");
+    jumpOverlay.hidden = false;
+    jumpGrid.querySelectorAll("[data-jump-index]").forEach((button) => button.addEventListener("click", () => {
+      stopAudio();
+      stageIndex = Number(button.dataset.jumpIndex);
+      jumpOverlay.hidden = true;
+      renderStage();
+    }));
   }
 
   $("#startButton").addEventListener("click", () => {
@@ -695,6 +707,9 @@
     showScreen(lessonScreen);
   });
   $("#closeButton").addEventListener("click", () => { stopAudio(); showScreen(startScreen); });
+  progressTrack.addEventListener("click", openJumpPicker);
+  $("#jumpClose").addEventListener("click", () => { jumpOverlay.hidden = true; });
+  jumpOverlay.addEventListener("click", (event) => { if (event.target === jumpOverlay) jumpOverlay.hidden = true; });
   $("#restartButton").addEventListener("click", () => { stageIndex = 0; oralSkipped = false; buildStages(); renderStage(); showScreen(lessonScreen); });
   $("#backButton").addEventListener("click", () => showScreen(startScreen));
   $("#furiganaToggle").addEventListener("click", () => {

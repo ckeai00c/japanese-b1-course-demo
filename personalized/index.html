@@ -10,10 +10,11 @@
 <body>
   <main class="app-shell">
     <section class="screen start-screen active" id="startScreen"><p class="eyebrow" id="courseEyebrow"></p><h1 id="courseTitle"></h1><p id="courseDescription"></p><div class="lesson-tags" id="courseTags"></div><p class="unit-label">unit 1 · lesson order</p><div class="lesson-route" id="courseRoute" aria-label="关卡顺序"></div><button class="primary-button" id="startButton" type="button">开始挑战</button></section>
-    <section class="screen lesson-screen" id="lessonScreen"><header class="lesson-header"><button class="icon-button" id="closeButton" type="button" aria-label="退出课程">×</button><div class="progress-track" aria-label="课程进度"><span class="progress-fill" id="progressFill"></span></div><span class="step-count" id="stepCount"></span></header><div class="stage" id="stage"></div></section>
+    <section class="screen lesson-screen" id="lessonScreen"><header class="lesson-header"><button class="icon-button" id="closeButton" type="button" aria-label="退出课程">×</button><button class="progress-track" id="progressTrack" type="button" aria-label="打开题目跳转"><span class="progress-fill" id="progressFill"></span></button><span class="step-count" id="stepCount"></span></header><div class="stage" id="stage"></div></section>
     <section class="screen finish-screen" id="finishScreen"><div class="finish-badge">✓</div><h2 id="finishTitle"></h2><p id="finishCopy"></p><button class="primary-button" id="restartButton" type="button">再练一次</button></section>
   </main>
   <div class="lookup-pop" id="lookupPop" role="status"></div>
+  <div class="jump-overlay" id="jumpOverlay" hidden><section class="jump-dialog" role="dialog" aria-modal="true" aria-labelledby="jumpTitle"><div class="jump-dialog-head"><h2 id="jumpTitle">跳转题目</h2><button class="jump-close" id="jumpClose" type="button" aria-label="关闭">×</button></div><div class="jump-grid" id="jumpGrid"></div></section></div>
   <script src="./course.config.js?v=5"></script>
   <script src="./course-engine.js?v=5"></script>
 </body>
