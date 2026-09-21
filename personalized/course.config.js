@@ -2,9 +2,9 @@ window.PHRASE_COURSE_CONFIG = {
   schemaVersion: 1,
   templateType: "personalized-phrase-course",
   meta: {
-    title: "赛后开麦：三句游戏黑话",
-    eyebrow: "ANIME GAME TALK · LEVEL 1",
-    description: "跟着 Chewchew 学会“带飞、无双、打崩”三组表达，再拼出同一句型的赛后吐槽。",
+    title: "个性化表达训练",
+    eyebrow: "PERSONALIZED JAPANESE · LEVEL 1",
+    description: "在具体场景里认识词语、拼出句子，再用自己的声音说出来。",
     tags: ["キャリー", "無双", "沼る"],
     route: [
       { number: 1, label: "新学", active: true },
@@ -13,7 +13,7 @@ window.PHRASE_COURSE_CONFIG = {
       { number: 4, label: "复习" }
     ],
     finishTitle: "课程完成",
-    finishCopy: "三组游戏黑话和三句统一句型已经通关。"
+    finishCopy: "三组表达和三句统一句型已经通关。"
   },
   theme: {
     coverImage: "assets/images/carry.png",
@@ -25,6 +25,14 @@ window.PHRASE_COURSE_CONFIG = {
       success: "#45ca91",
       danger: "#ff5757",
       accent: "#f27130"
+    },
+    scene: {
+      backgroundImage: "assets/images/esports-room.png",
+      characters: [
+        { name: "ChewChew", image: "assets/images/npcs/chewchew.png", side: "left" },
+        { name: "Quinn", image: "assets/images/npcs/quinn.png", side: "right" }
+      ],
+      prompt: "现在是什么情况？"
     }
   },
   audio: {
@@ -55,6 +63,9 @@ window.PHRASE_COURSE_CONFIG = {
     "ずっと応援してた": "ずっと<ruby>応援<rt>おうえん</rt></ruby>してた",
     "今日の試合": "<ruby>今日<rt>きょう</rt></ruby>の<ruby>試合<rt>しあい</rt></ruby>",
     "昨日の試合": "<ruby>昨日<rt>きのう</rt></ruby>の<ruby>試合<rt>しあい</rt></ruby>"
+    ,"ごめん、今日の試合、普通に沼ってたわ（笑）": "<ruby>ごめん</ruby>、<ruby>今日<rt>きょう</rt></ruby>の<ruby>試合<rt>しあい</rt></ruby>、<ruby>普通<rt>ふつう</rt></ruby>に<ruby>沼<rt>ぬま</rt></ruby>ってたわ（笑）"
+    ,"ごめん、今日の試合、めっちゃ無双してたわ（笑）": "<ruby>ごめん</ruby>、<ruby>今日<rt>きょう</rt></ruby>の<ruby>試合<rt>しあい</rt></ruby>、めっちゃ<ruby>無双<rt>むそう</rt></ruby>してたわ（笑）"
+    ,"ごめん、今日の試合、完全にキャリーしてたわ（笑）": "<ruby>ごめん</ruby>、<ruby>今日<rt>きょう</rt></ruby>の<ruby>試合<rt>しあい</rt></ruby>、<ruby>完全<rt>かんぜん</rt></ruby>にキャリーしてたわ（笑）"
   },
   vocabulary: [
     {

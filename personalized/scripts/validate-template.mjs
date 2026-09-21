@@ -31,6 +31,8 @@ if (config) {
   check(new Set(ids).size === ids.length, "All vocabulary and sentence ids must be unique");
 
   const assetPaths = new Set([config.theme?.coverImage, config.theme?.backgroundImage]);
+  if (config.theme?.scene?.backgroundImage) assetPaths.add(config.theme.scene.backgroundImage);
+  (config.theme?.scene?.characters || []).forEach((character) => assetPaths.add(character.image));
   const audioPaths = new Set();
   const addAudio = (relative) => { if (relative) audioPaths.add(path.join(config.audio.root, relative)); };
   if (config.audio?.feedbackRoot) {
