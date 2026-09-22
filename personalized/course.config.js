@@ -32,11 +32,14 @@ window.PHRASE_COURSE_CONFIG = {
         { name: "ChewChew", image: "assets/images/npcs/chewchew.png", side: "left" },
         { name: "Quinn", image: "assets/images/npcs/quinn.png", side: "right" }
       ],
-      prompt: "现在是什么情况？"
+      prompt: "现在是什么情况？",
+      dialogue: { jp: "今、どんな状況？", zh: "现在是什么情况？", groups: [{ jp: "今、", zh: "现在，", audio: "" }, { jp: "どんな状況？", zh: "什么情况？", audio: "" }], audio: "" }
     }
   },
   audio: {
     root: "assets/audio/course_tts/",
+    npcRoot: "assets/audio/course_tts/",
+    voices: { machine: "Minami / ja-JP-NanamiNeural", npc: "NPC / A01-M-JP" },
     feedbackRoot: "assets/audio/feedback/",
     correct: "correct.mp3",
     wrong: "wrong.mp3",

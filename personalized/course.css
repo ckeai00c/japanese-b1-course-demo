@@ -32,6 +32,7 @@
     .conversation-scene .scene-npc.left{left:-25px}.conversation-scene .scene-npc.right{right:-25px}
     .conversation-translation{display:flex;justify-content:center;flex-wrap:wrap;gap:2px 4px}
     .conversation-translation-chunk{padding:0 2px 2px;border-bottom:1px dashed #8a93a8;background:transparent;color:var(--muted);font-size:13px;line-height:1.5}
+    .scene-caption-chunk{display:inline;padding:0 2px 2px;border:0;border-bottom:1px dashed #8a93a8;background:transparent;color:inherit;font:inherit;font-weight:inherit;line-height:inherit}
     .oral-board .follow-card{border-color:#b88cff;background:#fbf7ff;box-shadow:0 0 0 6px rgba(184,140,255,.2)}
     .oral-board .follow-title{font-size:18px;font-weight:800}.oral-board .follow-target{font-size:23px;line-height:1.85}.oral-board .follow-translation{font-size:14px}
     .oral-board .record-area{margin-top:auto;padding-top:34px}.oral-board .record-button{width:76px;height:76px;background:#8159d8;font-size:30px;line-height:1}.oral-board .record-button.recording{background:#d95785}.oral-board .record-copy{font-size:13px}
