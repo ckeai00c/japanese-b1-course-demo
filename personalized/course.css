@@ -36,3 +36,11 @@
     .oral-board .follow-title{font-size:18px;font-weight:800}.oral-board .follow-target{font-size:23px;line-height:1.85}.oral-board .follow-translation{font-size:14px}
     .oral-board .record-area{margin-top:auto;padding-top:34px}.oral-board .record-button{width:76px;height:76px;background:#8159d8;font-size:30px;line-height:1}.oral-board .record-button.recording{background:#d95785}.oral-board .record-copy{font-size:13px}
     @media(max-width:380px){.conversation-scene{height:270px}.conversation-scene .scene-npc{width:210px;height:210px}.conversation-scene .scene-prompt strong{font-size:15px}.oral-board .follow-target{font-size:20px}}
+    .oral-board{min-height:calc(100vh - 319px);padding-top:27px;text-align:center}
+    .oral-board .follow-card{padding:16px 14px 14px;border:2px solid #d9c0f0;border-radius:9px;background:#fbf7ff;box-shadow:none}
+    .oral-board .follow-title{margin:0 0 12px;color:#a963df;font-size:17px;font-weight:750;text-align:left}
+    .oral-board .audio-line{justify-content:center;margin-top:0}.oral-board .follow-target{color:#3f4768;font-size:19px;line-height:1.85}.oral-board .follow-translation{display:inline-block;margin-top:7px;padding:0 1px 2px;border-bottom:1px dashed #9ca4b8;color:#858da2;font-size:13px}
+    .oral-board .record-area{margin-top:auto;padding-top:18px}.oral-board .record-area:before{content:"点击话筒，读出上面的日语";display:block;min-height:22px;margin-bottom:6px;color:#737c94;font-size:13px;line-height:1.55}
+    .oral-board .record-button{width:64px;height:64px;margin:8px auto 11px;border:4px solid #ead8fa;background:#a963df;font-size:0;box-shadow:0 6px 14px rgba(169,99,223,.24)}
+    .oral-board .record-button:before{content:"";width:30px;height:30px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 14a3 3 0 0 0 3-3V6a3 3 0 0 0-6 0v5a3 3 0 0 0 3 3Zm-5-3a5 5 0 0 0 10 0M12 16v4m-3 0h6' fill='none' stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.8'/%3E%3C/svg%3E") center/contain no-repeat}
+    .oral-board .record-button.recording{background:#a963df;box-shadow:0 0 0 7px rgba(169,99,223,.16),0 6px 14px rgba(169,99,223,.24)}.oral-board .record-copy{margin-top:0;color:#737c94;font-size:12px}.oral-board .skip-button{margin-top:18px;color:#a0a6b4;font-size:13px}
