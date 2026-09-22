@@ -38,6 +38,7 @@
 
 每个搭配至少拆成 2 个 Chunk，标点写在 Chunk 文本末尾即可，渲染时会自动固定在横线外。
 `written.lookupSegments` 单独定义中文题干的查词分段，每段包含 `zh` 与对应的 `jp`，所有 `zh` 必须完整拼回原中文题干；这样作答 Chunk 的语法说明不会污染题干。`dialogue.reading` 用于会话注音，会话音频优先读取音频映射，缺失时使用日语 TTS。
+`oral.lookupSegments` 同样定义“现在不做口语题”后转换出的中文题干，必须完整拼回 `oral.zh`；语义分段与拼接选项的逐块提示分开维护。切题、退出或重播时会中断旧音频，离开口语题也会终止当次识别。
 `sceneImage` 使用无人场景底图，NPC 独立叠加。对话气泡按说话顺序自动横向切换。V3 音效按文件名绑定：`audio_combo*` 连续答对、`correctSpeak` 口语正确、`PopUpOpen` 查词弹出、`GameSucceed` 通关；`showCoin` 与 `only_get_coin` 预留给金币动画。
 
 ## 本地运行

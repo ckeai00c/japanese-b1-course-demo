@@ -238,6 +238,7 @@ h1 { margin: 0; color: #202942; font-size: 29px; line-height: 1.25; letter-spaci
 
 .lookup-pop { position: fixed; z-index: 30; max-width: 240px; padding: 9px 12px; transform: translate(-50%, -100%) translateY(-8px); border-radius: 7px; background: #424967; color: #fff; font-size: 13px; line-height: 1.5; white-space: pre-line; opacity: 0; pointer-events: none; transition: opacity .12s ease; }
 .lookup-pop::after { content: ""; position: absolute; top: 100%; left: 50%; margin-left: -6px; border: 6px solid transparent; border-top-color: #424967; }
+.lookup-pop.below::after { top: auto; bottom: 100%; border-top-color: transparent; border-bottom-color: #424967; }
 .lookup-pop.visible { opacity: 1; }
 .confirm-overlay { position: fixed; z-index: 50; inset: 0; display: grid; padding: 22px; place-items: center; background: rgba(18, 22, 38, .58); }
 .confirm-overlay[hidden] { display: none; }

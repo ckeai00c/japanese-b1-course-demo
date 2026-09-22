@@ -54,6 +54,8 @@ if (config) {
       check(item.written?.lookupSegments?.every((segment) => segment.jp && segment.zh), `${item.id}.written: every lookup segment needs a Japanese mapping`);
       check(item.written?.lookupSegments?.every((segment) => !/[（(].*助词.*[）)]/u.test(segment.zh)), `${item.id}.written: function-word hints must not appear in the blue Chinese prompt`);
       check(Boolean(item.oral?.jp && item.oral?.zh && item.oral?.accepted?.length), `${item.id}.oral: oral prompt and accepted recognition forms are required`);
+      check(item.oral?.lookupSegments?.map((segment) => segment.zh).join("") === item.oral?.zh, `${item.id}.oral: skip-oral lookup segments must reconstruct the Chinese prompt exactly`);
+      check(item.oral?.lookupSegments?.every((segment) => segment.jp && segment.zh), `${item.id}.oral: every lookup segment needs a Japanese mapping`);
       check(item.oral?.chunks?.map((chunk) => chunk.jp).join("") === item.oral?.jp, `${item.id}.oral: skip-oral chunks must reconstruct the sentence exactly`);
       check(Boolean(item.oral?.distractors?.length), `${item.id}.oral: skip-oral distractors are required`);
       check(item.collocation1.image !== item.exposure.image && item.exposure.image !== item.collocation2.image && item.collocation1.image !== item.collocation2.image, `${item.id}: each vocabulary stage needs a different image`);

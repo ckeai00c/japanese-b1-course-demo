@@ -19,6 +19,9 @@
   let stageIndex = 0;
   let activeAudio = null;
   let activeAudioResolve = null;
+  let audioGeneration = 0;
+  let stageGeneration = 0;
+  let activeRecognition = null;
   let lookupTimer = null;
   let oralSkipped = false;
   let furiganaVisible = window.localStorage.getItem("jp-furigana") !== "off";
@@ -78,6 +81,9 @@
   }
 
   function showScreen(target) {
+    window.clearTimeout(lookupTimer);
+    lookupPop.classList.remove("visible");
+    lookupPop.textContent = "";
     [startScreen, lessonScreen, finishScreen].forEach((screen) => screen.classList.toggle("active", screen === target));
     window.scrollTo(0, 0);
   }
@@ -107,7 +113,8 @@
   }
 
   function stopAudio() {
-    if (activeAudioResolve) activeAudioResolve();
+    audioGeneration += 1;
+    if (activeAudioResolve) activeAudioResolve(false);
     activeAudioResolve = null;
     if (activeAudio) {
       activeAudio.pause();
@@ -120,12 +127,19 @@
   function speak(text, rate = 1) {
     stopAudio();
     return new Promise((resolve) => {
-      if (!("speechSynthesis" in window)) return resolve();
+      if (!("speechSynthesis" in window)) return resolve(false);
+      const generation = audioGeneration;
       const utterance = new SpeechSynthesisUtterance(String(text).replace(/[、。]/g, " "));
       utterance.lang = config.defaults.speech.lang;
       utterance.rate = rate;
-      utterance.onend = resolve;
-      utterance.onerror = resolve;
+      activeAudioResolve = resolve;
+      const finish = () => {
+        if (generation !== audioGeneration) return;
+        activeAudioResolve = null;
+        resolve(true);
+      };
+      utterance.onend = finish;
+      utterance.onerror = finish;
       window.speechSynthesis.speak(utterance);
     });
   }
@@ -134,22 +148,24 @@
     if (!source) return speak(text, slow ? config.defaults.speech.slowRate : config.defaults.speech.rate);
     stopAudio();
     return new Promise((resolve) => {
+      const generation = audioGeneration;
       const audio = new Audio(source);
       activeAudio = audio;
       activeAudioResolve = resolve;
       audio.playbackRate = slow ? config.defaults.speech.slowRate : 1;
       let fallingBack = false;
       const finish = () => {
+        if (generation !== audioGeneration) return;
         if (activeAudio === audio) activeAudio = null;
         if (activeAudioResolve === resolve) activeAudioResolve = null;
-        resolve();
+        resolve(true);
       };
       const fallback = () => {
         if (fallingBack) return;
         fallingBack = true;
         if (activeAudio === audio) activeAudio = null;
         if (activeAudioResolve === resolve) activeAudioResolve = null;
-        void speak(text, slow ? config.defaults.speech.slowRate : 1).then(resolve);
+        if (generation === audioGeneration) void speak(text, slow ? config.defaults.speech.slowRate : 1).then(resolve);
       };
       audio.onended = finish;
       audio.onerror = fallback;
@@ -170,10 +186,12 @@
   }
 
   async function playAnswer(text, audio, kind) {
+    stopAudio();
+    const generation = audioGeneration;
     await playFeedback(kind);
-    if (kind === "correct") {
+    if (kind === "correct" && generation === audioGeneration) {
       await new Promise((resolve) => window.setTimeout(resolve, config.defaults.feedback.leadMs));
-      await playAudio(audio, text);
+      if (generation === audioGeneration) await playAudio(audio, text);
     }
   }
 
@@ -198,8 +216,11 @@
     window.clearTimeout(lookupTimer);
     const rect = anchor.getBoundingClientRect();
     lookupPop.textContent = text;
-    lookupPop.style.left = `${Math.min(window.innerWidth - 18, Math.max(18, rect.left + rect.width / 2))}px`;
-    lookupPop.style.top = `${Math.max(12, rect.top - 10)}px`;
+    const halfWidth = lookupPop.offsetWidth / 2;
+    lookupPop.style.left = `${Math.min(window.innerWidth - halfWidth - 8, Math.max(halfWidth + 8, rect.left + rect.width / 2))}px`;
+    const above = rect.top >= lookupPop.offsetHeight + 22;
+    lookupPop.style.top = `${above ? rect.top - 10 : rect.bottom + lookupPop.offsetHeight + 18}px`;
+    lookupPop.classList.toggle("below", !above);
     lookupPop.classList.add("visible");
     lookupTimer = window.setTimeout(() => lookupPop.classList.remove("visible"), 1200);
     void playFeedback("popup");
@@ -407,9 +428,12 @@
         const complete = current === chunks.length;
         draw(complete);
         void playFeedback("correct");
+        const completedStage = stageGeneration;
         const chunkPlayback = playAudio(audioFor(chunk.tts || chunk.jp, chunk.audio), chunk.tts || chunk.jp);
         if (complete) {
-          void chunkPlayback.then(() => playAudio(audioFor(content.jp, content.audio), content.jp));
+          void chunkPlayback.then((finished) => {
+            if (finished && completedStage === stageGeneration) return playAudio(audioFor(content.jp, content.audio), content.jp);
+          });
         }
       }));
     };
@@ -484,9 +508,12 @@
         const complete = current === chunks.length;
         draw(complete);
         void playFeedback("correct");
+        const completedStage = stageGeneration;
         const chunkPlayback = playAudio(audioFor(chunk.tts || chunk.jp, chunk.audio), chunk.tts || chunk.jp);
         if (complete) {
-          void chunkPlayback.then(() => playAudio(audioFor(content.jp, content.audio), content.jp));
+          void chunkPlayback.then((finished) => {
+            if (finished && completedStage === stageGeneration) return playAudio(audioFor(content.jp, content.audio), content.jp);
+          });
         }
       }));
     };
@@ -525,6 +552,7 @@
   }
 
   function renderOral(itemIndex) {
+    const currentStage = stageGeneration;
     const item = lesson.items[itemIndex];
     const content = item.oral;
     const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
@@ -574,11 +602,12 @@
     };
 
     const finishRecognition = async () => {
+      if (currentStage !== stageGeneration) return;
       recording = false;
       recordButton.disabled = true;
       resetRecordButton("正在识别");
       status.textContent = "正在识别，请稍候";
-      const correct = accepted.some((answer) => normalized(transcript).includes(answer) || answer.includes(normalized(transcript)) && normalized(transcript).length > 5);
+      const correct = accepted.some((answer) => normalized(transcript).includes(answer));
       if (!correct) {
         recordButton.disabled = false;
         resetRecordButton("再录一次");
@@ -592,7 +621,9 @@
       resetRecordButton("朗读正确");
       status.textContent = `识别结果：${transcript}`;
       await playFeedback("correctSpeak");
+      if (currentStage !== stageGeneration) return;
       await playAudio(audioFor(content.jp, content.audio), content.jp);
+      if (currentStage !== stageGeneration) return;
       $("#oralResult").innerHTML = completeBlock(content);
       bindAudio();
       bindLookups();
@@ -611,6 +642,7 @@
       transcript = "";
       transcriptEl.textContent = "";
       recognition = new Recognition();
+      activeRecognition = recognition;
       recognition.lang = "ja-JP";
       recognition.continuous = false;
       recognition.interimResults = true;
@@ -633,6 +665,8 @@
         status.textContent = "没有完成识别，请检查麦克风权限后再试。";
       };
       recognition.onend = () => {
+        if (activeRecognition === recognition) activeRecognition = null;
+        if (currentStage !== stageGeneration) return;
         recordButton.classList.remove("recording");
         if (recognitionFailed) {
           recognitionFailed = false;
@@ -670,10 +704,17 @@
   }
 
   function renderStage() {
+    stageGeneration += 1;
+    if (activeRecognition) {
+      activeRecognition.abort();
+      activeRecognition = null;
+    }
     const stage = stages[stageIndex];
     currentBackground();
     progressFill.style.width = `${((stageIndex + 1) / stages.length) * 100}%`;
+    window.clearTimeout(lookupTimer);
     lookupPop.classList.remove("visible");
+    lookupPop.textContent = "";
     window.scrollTo(0, 0);
     if (stage.type === "collocation") renderCollocation(stage.itemIndex, stage.key);
     if (stage.type === "core") renderCore(stage.itemIndex);
@@ -699,7 +740,13 @@
     renderStage();
     showScreen(lessonScreen);
   });
-  $("#closeButton").addEventListener("click", () => { stopAudio(); showScreen(startScreen); });
+  $("#closeButton").addEventListener("click", () => {
+    stopAudio();
+    stageGeneration += 1;
+    activeRecognition?.abort();
+    activeRecognition = null;
+    showScreen(startScreen);
+  });
   progressTrack.addEventListener("click", openJumpPicker);
   $("#jumpClose").addEventListener("click", () => { jumpOverlay.hidden = true; });
   jumpOverlay.addEventListener("click", (event) => { if (event.target === jumpOverlay) jumpOverlay.hidden = true; });
