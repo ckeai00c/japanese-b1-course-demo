@@ -163,13 +163,19 @@
     }).join("");
   }
 
-  function complete(item, explanation = "") {
+  function complete(item) {
     return `<div class="complete">
       ${audioButtons(item.jp, item.audio)}
       <div class="complete-text" aria-label="完整句子">${chunkedSentence(item)}</div>
-      ${explanation ? `<div class="explanation"><strong>语法讲解</strong><p>${rich(explanation)}</p></div>` : ""}
       <button class="primary-button" data-next>继续</button>
     </div>`;
+  }
+
+  function renderCompleted(item) {
+    stageEl.innerHTML = `<section class="board completed-board">${complete(item)}</section>`;
+    bindLookups();
+    bindAudio();
+    setNext();
   }
 
   const setNext = () => $("[data-next]")?.addEventListener("click", next);
@@ -232,8 +238,7 @@
           return;
         }
         setTimeout(() => {
-          stageEl.innerHTML = `${npcScene(item)}<section class="board completed-board">${complete(item, content.explanation)}</section>`;
-          bindLookups(); bindAudio(); setNext();
+          renderCompleted(item);
           void play(audioFor(item.jp, item.audio), item.jp);
         }, 220);
       }));
@@ -249,7 +254,7 @@
     const options = [...content.options].sort(() => Math.random() - 0.5);
     const line = content.parts.map((part, partIndex) => partIndex === content.blank
       ? '<span class="blank">____</span>'
-      : `<button class="inline-chunk" type="button" ${lookupAttrs(part, item.chunks[partIndex]?.zh || item.zh)}>${displayJapanese(part, item.chunks[partIndex]?.reading)}</button>`).join("、");
+      : `<button class="inline-chunk" type="button" ${lookupAttrs(part, item.chunks[partIndex]?.zh || item.zh)}>${displayJapanese(part, item.chunks[partIndex]?.reading)}</button>`).join("");
     stageEl.innerHTML = `${npcScene(item)}<section class="board">
       <h2>听音频，补全句子：</h2><div class="listen-control">${audioButton(item.jp, item.audio)}</div>
       <p class="fill-line">${line}</p>
@@ -263,8 +268,7 @@
       feedback(correct ? "correct" : "wrong");
       if (!correct) return setTimeout(() => button.classList.remove("wrong"), 450);
       document.querySelectorAll(".choice-button").forEach((entry) => { entry.disabled = true; });
-      stageEl.innerHTML = `${npcScene(item)}<section class="board completed-board">${complete(item)}</section>`;
-      bindLookups(); bindAudio(); setNext();
+      renderCompleted(item);
     }));
     void play(audioFor(item.jp, item.audio), item.jp);
   }
@@ -283,8 +287,7 @@
       feedback(correct ? "correct" : "wrong");
       if (!correct) return setTimeout(() => button.classList.remove("wrong"), 450);
       document.querySelectorAll(".choice-button").forEach((entry) => { entry.disabled = true; });
-      $("#result").innerHTML = complete(item, config.defaults.grammar.explanation);
-      bindLookups(); bindAudio(); setNext();
+      renderCompleted(item);
     }));
     void play(audioFor(content.audioText, content.audio), content.audioText);
   }

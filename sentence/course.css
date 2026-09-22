@@ -40,12 +40,12 @@ h1 { margin: 0; color: #202942; font-size: 29px; line-height: 1.25; }
 .stage { flex: 1; }
 .board { min-height: calc(100vh - 300px); padding: 24px 20px max(24px, env(safe-area-inset-bottom)); border-radius: 22px 22px 0 0; background: #fff; }
 .board h2 { margin: 0 0 16px; color: #3f4768; font-size: 17px; line-height: 1.5; }
-.npc-scene { position: relative; min-height: 260px; overflow: hidden; background: linear-gradient(rgba(14,18,38,.18), rgba(14,18,38,.48)), var(--scene-image) center top / cover no-repeat; }
+.npc-scene { position: relative; min-height: 345px; overflow: hidden; background: linear-gradient(rgba(14,18,38,.18), rgba(14,18,38,.48)), var(--scene-image) center top / cover no-repeat; }
 .npc { position: absolute; bottom: 0; width: 158px; height: 214px; background-repeat: no-repeat; background-size: 205% auto; background-position: 72% bottom; filter: drop-shadow(0 5px 5px rgba(0,0,0,.22)); }
 .npc-left { left: 2px; background-image: url("assets/images/npc-left.png"); }
 .npc-right { right: 3px; }
 .dialogue-bubble, .reply-bubble { position: absolute; z-index: 2; max-width: 78%; padding: 8px 9px 8px 12px; border: 2px solid #4d7bf1; border-radius: 12px; background: #fff; color: #3f4768; text-align: left; box-shadow: 0 3px 0 rgba(71,114,238,.12); }
-.dialogue-bubble { top: 14px; left: 64px; }
+.dialogue-bubble { top: 12px; left: 20px; width: calc(100% - 40px); max-width: none; }
 .dialogue-bubble { display: grid; grid-template-columns: 1fr auto; gap: 5px; align-items: center; }
 .dialogue-text { min-width: 0; padding: 0; border: 0; background: transparent; text-align: left; }
 .dialogue-bubble .audio-button { width: 30px; height: 30px; font-size: 13px; }
@@ -81,6 +81,7 @@ h1 { margin: 0; color: #202942; font-size: 29px; line-height: 1.25; }
 .slow-mark { font-size: 12px; font-weight: 850; }
 .listen-control { margin: -8px 0 16px; }
 .complete { text-align: left; }
+.completed-board { min-height: calc(100vh - 118px); padding-top: 40px; }
 .audio-buttons { display: inline-grid; grid-auto-flow: column; margin: 2px 0 14px; overflow: hidden; border-radius: 22px; background: #f4f7ff; }
 .audio-buttons .audio-button { border-radius: 0; border-right: 1px solid #dde4f2; }
 .audio-buttons .audio-button:last-child { border-right: 0; }

@@ -40,8 +40,10 @@ check(engine.includes("segmentedTranslation(item)"), "Chinese prompts must suppo
 check(engine.includes("cloze-track") && engine.includes("centeredLeft") && engine.includes("viewport.scrollTo"), "grammar cloze groups must center the active group after a correct answer");
 check(engine.includes("audioButtons(item.jp, item.audio)"), "completed sentences must expose normal and slow playback");
 check(!engine.includes("groupProgress"), "grammar cloze must use a visual card peek instead of progress helper text");
-check(engine.includes("stageEl.innerHTML = `${npcScene(item)}<section class=\"board completed-board\">"), "completed listening fill must replace the exercise with the full sentence");
-check(engine.includes("complete(item, content.explanation)"), "completed grammar cloze must replace grouped prompts with the lookup-enabled full sentence");
+check(engine.includes('stageEl.innerHTML = `<section class="board completed-board">${complete(item)}</section>`'), "completed exercises must replace the entire exercise with the full sentence");
+check(engine.includes("renderCompleted(item)"), "all answer flows must use the shared completed-sentence renderer");
+check(!engine.includes("function complete(item, explanation"), "completed exercises must not retain explanation content");
+check(!engine.includes('.join("、")'), "listening fill must not insert punctuation between configured sentence parts");
 check(engine.includes("const options = [...content.options].sort"), "listening fill answer positions must be shuffled");
 check(config?.lesson?.grammar?.image === "assets/images/npc-right-1.png", "grammar intro must use the Tummy NPC asset");
 check(config.defaults?.feedback?.correct?.endsWith("/correctSpeak.mp3"), "Correct answers must use correctSpeak.mp3");
