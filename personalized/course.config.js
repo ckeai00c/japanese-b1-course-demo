@@ -27,7 +27,7 @@ window.PHRASE_COURSE_CONFIG = {
       accent: "#f27130"
     },
     scene: {
-      backgroundImage: "assets/images/esports-room.png",
+      backgroundImage: "assets/images/scene-refs/expo-stage.png",
       characters: [
         { name: "ChewChew", image: "assets/images/npcs/chewchew.png", side: "left" },
         { name: "Quinn", image: "assets/images/npcs/quinn.png", side: "right" }
