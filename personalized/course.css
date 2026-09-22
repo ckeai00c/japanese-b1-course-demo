@@ -23,6 +23,7 @@
     .scene-backdrop{height:190px;margin-bottom:-45px}.scene-npc{bottom:-12px;width:190px;height:190px}.scene-npc.left{left:-14px}.scene-npc.right{right:-14px}
     .conversation-card + .topic-card{display:none}
     .scene-card + .board > .conversation-card{display:none}
+    .scene-backdrop:has(+ .scene-card){display:none}
     @media(max-width:380px){.scene-backdrop{height:172px;margin-bottom:-38px}.scene-npc{width:170px;height:172px}}
     .conversation-scene{height:290px;margin-bottom:-24px;border-radius:24px 24px 16px 16px}
     .conversation-scene .scene-prompt{top:18px;left:22px;max-width:84%;padding:12px 16px 13px}
