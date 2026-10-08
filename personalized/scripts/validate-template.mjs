@@ -112,6 +112,9 @@ check(engine.includes('playFeedback("correct")'), "Correct answers must play fee
 check(engine.includes('playFeedback("wrong")'), "Wrong answers must play feedback audio");
 check(engine.includes("playChunkAnswer"), "Chunk answers must sequence feedback before pronunciation audio");
 check(!engine.includes("await playChunkAnswer"), "Chunk pronunciation must not block progression");
+check(!engine.includes("await new Promise(resolve=>window.setTimeout(resolve,CONFIG.audio.feedbackLeadMs"), "Chunk audio must start inside the user's click event");
+check(engine.includes('playAudio(path,false,1,"machine",CONFIG.audio.feedbackLeadMs'), "Chunk audio must preserve the feedback lead without delaying audio.play()");
+check(engine.includes("wireContinue(800)"), "Sentence completion must guard the Continue button against repeat taps");
 check(engine.includes("clearStageActivity"), "Stage changes must cancel stale audio, recognition, and timers");
 check(engine.includes('clearStageActivity();renderOralFallback(index)'), "Skipping oral practice must cancel audio and recognition before showing chunks");
 check(!engine.includes('${promptHTML(item.groups)}${completeHTML(item.groups,item.audio)}'), "Skipped oral fallback completion must show only the completed sentence");
