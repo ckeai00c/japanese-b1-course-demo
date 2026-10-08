@@ -32,9 +32,9 @@ if (config) {
 
   const assetPaths = new Set([config.theme?.coverImage, config.theme?.backgroundImage]);
   if (config.theme?.scene?.backgroundImage) assetPaths.add(config.theme.scene.backgroundImage);
-  (config.theme?.scene?.characters || []).forEach((character) => assetPaths.add(character.image));
+  Object.values(config.theme?.scene?.characters || {}).forEach((character) => assetPaths.add(character.image));
   const audioPaths = new Set();
-  const addAudio = (relative) => { if (relative) audioPaths.add(path.join(config.audio.root, relative)); };
+  const addAudio = (relative, voice = "machine") => { if (relative) audioPaths.add(path.join(voice === "npc" ? config.audio.npcRoot : voice === "actor" ? config.audio.actorRoot : config.audio.root, relative)); };
   if (config.audio?.feedbackRoot) {
     if (config.audio.correct) audioPaths.add(path.join(config.audio.feedbackRoot, config.audio.correct));
     if (config.audio.wrong) audioPaths.add(path.join(config.audio.feedbackRoot, config.audio.wrong));
@@ -63,9 +63,23 @@ if (config) {
     check(sentence.chunks?.map((part) => part.jp).join("") === sentence.jp, `${label} chunks must reconstruct the sentence exactly`);
     check(sentence.chunks?.every((part) => part.distractor?.jp && part.distractor?.audio), `${label} requires one distractor with audio per chunk`);
     check(sentence.chunks?.some((part) => /[、。！？]|（笑）|（泣）/.test(part.jp)), `${label} must retain punctuation in fixed slot positions`);
-    addAudio(sentence.audio);
+    addAudio(sentence.exposureAudio, sentence.exposureVoice || "actor");
+    addAudio(sentence.buildAudio, "npc");
+    addAudio(sentence.followAudio, "npc");
+    addAudio(sentence.dialogue?.audio, "npc");
+    sentence.dialogue?.groups?.forEach((part) => addAudio(part.audio));
     sentence.chunks?.forEach((part) => { addAudio(part.audio); addAudio(part.distractor?.audio); });
+    check(sentence.dialoguePosition === "after", `${label} must keep the dialogue hidden until the target sentence is completed`);
+    check(Boolean(sentence.buildCustomerId && sentence.followCustomerId), `${label} must assign separate sentence and oral customer NPCs`);
   }
+
+  const sceneCharacters = config.theme?.scene?.characters || {};
+  const shopkeeperId = config.theme?.scene?.shopkeeperId;
+  check(Boolean(shopkeeperId && sceneCharacters[shopkeeperId]), "Scene requires one configured shopkeeper NPC");
+  const stageCustomers = (config.sentences || []).flatMap((sentence) => [sentence.buildCustomerId, sentence.followCustomerId]);
+  check(stageCustomers.length === 6, "The lesson requires exactly 6 sentence-type NPC assignments");
+  check(stageCustomers.every((id) => id && id !== shopkeeperId), "Customer NPC assignments must never reuse the shopkeeper NPC");
+  check(new Set(stageCustomers).size === 4, "The 6 sentence-type questions must rotate all 4 customer NPC voices");
 
   if (sentenceChunks.length === 3 && sentenceChunks.every((chunks) => chunks.length === 4)) {
     check(sentenceChunks.every((chunks) => chunks[0].jp === sentenceChunks[0][0].jp), "The 3 sentences must share the same opening pattern");
@@ -101,6 +115,8 @@ check(!engine.includes("await playChunkAnswer"), "Chunk pronunciation must not b
 check(engine.includes("clearStageActivity"), "Stage changes must cancel stale audio, recognition, and timers");
 check(engine.includes('clearStageActivity();renderOralFallback(index)'), "Skipping oral practice must cancel audio and recognition before showing chunks");
 check(!engine.includes('${promptHTML(item.groups)}${completeHTML(item.groups,item.audio)}'), "Skipped oral fallback completion must show only the completed sentence");
+check(engine.includes('exposureAudio'), "Image exposure sentences must use actor audio");
+check(engine.includes('buildAudio') && engine.includes('followAudio'), "Sentence and oral stages must use their assigned NPC audio");
 check(css.includes(".slot-punctuation"), "CSS must style fixed sentence punctuation");
 new Function(engine);
 
